@@ -2,6 +2,7 @@
 
 """
 通过斐波那契的例子来练习yield的用法
+https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
 """
 
 
@@ -52,3 +53,32 @@ class Fab(object):
             self.n = self.n + 1
             return r
         raise StopIteration()
+
+
+def fab_2(max):
+    '''
+    使用yield效果同Fab class
+    :param max: 
+    :return: 
+    '''
+    n, a, b = 0, 0, 1
+    while n < max:
+        yield b
+        a, b = b, a + b
+        n = n + 1
+
+
+def read_file(fpath):
+    '''
+    应用yield来读取文件
+    :param fpath: 
+    :return: 
+    '''
+    BLOCK_SIZE = 1024
+    with open(fpath, 'rb') as f:
+        while True:
+            block = f.read(BLOCK_SIZE)
+            if block:
+                yield block
+            else:
+                return
