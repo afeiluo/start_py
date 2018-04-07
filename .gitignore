@@ -6,3 +6,4 @@
 /parts
 /start_py.egg-info
 .installed.cfg
+.vscode
